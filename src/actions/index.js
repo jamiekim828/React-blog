@@ -24,3 +24,26 @@ const _fetchUser = _.memoize(async (id, dispatch) => {
 
   dispatch({ type: 'FETCH_USER', payload: response.data });
 });
+
+// -------------------------------------------------------
+// alternate solution
+
+// export const fetchPosts = () => async (dispatch) => {
+//   const response = await jsonPlaceholder.get('/posts');
+
+//   dispatch({ type: 'FETCH_POSTS', payload: response.data });
+// };
+
+// export const fetchUser = (id) => async (dispatch) => {
+//   const response = await jsonPlaceholder.get(`/users/${id}`);
+
+//   dispatch({ type: 'FETCH_USER', payload: response.data });
+// };
+
+// export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+//   console.log('about to fetch posts');
+//   await dispatch(fetchPosts()); // call fetchPosts
+//   const userIds = _.uniq(_.map(getState().posts, 'userId'));
+//   userIds.forEach(id => dispatch(fetchUser(id)))
+//   console.log('fetched posts');
+// };
